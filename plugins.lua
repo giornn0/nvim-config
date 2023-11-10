@@ -25,6 +25,7 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {"rcarriga/nvim-notify"},
     configs = function()
       require "plugins/configs/lspconfig"
       require "custom/configs/lspconfig"

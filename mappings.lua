@@ -32,15 +32,6 @@ M.crates = {
   }
 }
 
-M.masksman = {
-  n = {
-    ["<leader>t"]={
-      "<cmd>MarkdownPreviewToggle<CR>",
-      "Preview markdown toggle"
-    }
-  }
-}
-
 M.general = {
   n = {
     ["<C-z>"] = {
@@ -62,7 +53,11 @@ M.general = {
       -- end,
       "<cmd> LazyGit <CR>",
       "Open gitui"
-    }
+    },
+    ["<leader>tm"]={
+      "<cmd>MarkdownPreviewToggle<CR>",
+      "Preview markdown toggle"
+    },
   }
 }
 
