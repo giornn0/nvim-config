@@ -25,9 +25,14 @@ local plugins = {
           "angular-language-server",
           "marksman",
           "css-lsp",
-          "eslint-lsp",
+          "eslint_d",
           "prettier",
           "stylua",
+          "dockerfile-language-server",
+          "docker-compose-language-service",
+          "selene",
+          "yaml-language-server",
+          "yamllint",
         })
       end
     end,

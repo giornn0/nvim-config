@@ -15,7 +15,20 @@ local enable_format_on_save = function(_, bufnr)
     end,
   })
 end
---Tailwind - HTML - CSS
+
+--Docker + YAML
+lspconfig.dockerls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+lspconfig.docker_compose_language_service.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+lspconfig.yamlls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 --Enable (broadcasting) snippet capability for completion
 local capabilities_html = vim.lsp.protocol.make_client_capabilities()
@@ -84,11 +97,6 @@ lspconfig.tsserver.setup {
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
 }
-
--- lspconfig.sourcekit.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
 
 lspconfig.lua_ls.setup {
   capabilities = capabilities,
