@@ -1,34 +1,33 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local lspconfig = require("lspconfig")
-local protocol = require('vim.lsp.protocol')
+local lspconfig = require "lspconfig"
+local protocol = require "vim.lsp.protocol"
 
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
 local enable_format_on_save = function(_, bufnr)
-  vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+  vim.api.nvim_clear_autocmds { group = augroup_format, buffer = bufnr }
   vim.api.nvim_create_autocmd("BufWritePre", {
     group = augroup_format,
     buffer = bufnr,
     callback = function()
-      vim.lsp.buf.format({ bufnr = bufnr })
+      vim.lsp.buf.format { bufnr = bufnr }
     end,
   })
 end
 --Tailwind - HTML - CSS
 
-
 --Enable (broadcasting) snippet capability for completion
 local capabilities_html = vim.lsp.protocol.make_client_capabilities()
 capabilities_html.textDocument.completion.completionItem.snippetSupport = true
-lspconfig.html.setup({
+lspconfig.html.setup {
   capabilities = capabilities_html,
-  on_attach = enable_format_on_save
-})
+  on_attach = enable_format_on_save,
+}
 
-lspconfig.cssls.setup({
+lspconfig.cssls.setup {
   capabilities = capabilities,
-})
+}
 
 --Angular LSP
 --This path can be different according to the os.
@@ -46,35 +45,35 @@ lspconfig.angularls.setup {
   cmd = cmd,
   on_new_config = function(new_config, new_root_dir)
     new_config.cmd = cmd
-  end
+  end,
 }
 
 protocol.CompletionItemKind = {
-  '', -- Text
-  '', -- Method
-  '', -- Function
-  '', -- Constructor
-  '', -- Field
-  '', -- Variable
-  '', -- Class
-  'ﰮ', -- Interface
-  '', -- Module
-  '', -- Property
-  '', -- Unit
-  '', -- Value
-  '', -- Enum
-  '', -- Keyword
-  '﬌', -- Snippet
-  '', -- Color
-  '', -- File
-  '', -- Reference
-  '', -- Folder
-  '', -- EnumMember
-  '', -- Constant
-  '', -- Struct
-  '', -- Event
-  'ﬦ', -- Operator
-  '', -- TypeParameter
+  "", -- Text
+  "", -- Method
+  "", -- Function
+  "", -- Constructor
+  "", -- Field
+  "", -- Variable
+  "", -- Class
+  "ﰮ", -- Interface
+  "", -- Module
+  "", -- Property
+  "", -- Unit
+  "", -- Value
+  "", -- Enum
+  "", -- Keyword
+  "﬌", -- Snippet
+  "", -- Color
+  "", -- File
+  "", -- Reference
+  "", -- Folder
+  "", -- EnumMember
+  "", -- Constant
+  "", -- Struct
+  "", -- Event
+  "ﬦ", -- Operator
+  "", -- TypeParameter
 }
 
 -- Set up completion using nvim_cmp with LSP source
@@ -83,7 +82,7 @@ lspconfig.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
 -- lspconfig.sourcekit.setup {
@@ -101,13 +100,13 @@ lspconfig.lua_ls.setup {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
+        globals = { "vim" },
       },
 
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false
+        checkThirdParty = false,
       },
     },
   },
@@ -116,7 +115,9 @@ lspconfig.lua_ls.setup {
 lspconfig.tailwindcss.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "css", "scss",
+  filetypes = {
+    "css",
+    "scss",
     "sass",
     "postcss",
     "html",
@@ -156,6 +157,29 @@ lspconfig.tailwindcss.setup {
 
 lspconfig.cssls.setup {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  underline = true,
+  update_in_insert = false,
+  virtual_text = { spacing = 4, prefix = "\u{ea71}" },
+  severity_sort = true,
+})
+
+-- Diagnostic symbols in the sign column (gutter)
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
+
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = "●",
+  },
+  update_in_insert = true,
+  float = {
+    source = "always", -- Or "if_many"
+  },
+}

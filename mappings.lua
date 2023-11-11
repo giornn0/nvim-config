@@ -4,17 +4,17 @@ M.dap = {
   n = {
     ["<leader>db"] = {
       "<cmd> DapToggleBreakpoint<CR>",
-      "Toggle breakpoint"
+      "Toggle breakpoint",
     },
     ["<leader>dus"] = {
       function()
-        local widgets = require("dap.ui.widgets")
+        local widgets = require "dap.ui.widgets"
         local sidebar = widgets.sidebar(widgets.scopes)
         sidebar.open()
       end,
-      "Open debugging sidebar"
+      "Open debugging sidebar",
     },
-  }
+  },
 }
 
 M.crates = {
@@ -23,87 +23,87 @@ M.crates = {
       function()
         require("crates").upgrade_all_crates()
       end,
-      "Update crates"
+      "Update crates",
     },
     ["<leader>Tt"] = {
       function()
-        require('crates').toggle()
+        require("crates").toggle()
       end,
-      "Toggle"
+      "Toggle",
     },
     ["<leader>Tr"] = {
       function()
-        require('crates').reload()
+        require("crates").reload()
       end,
-      "Reload"
+      "Reload",
     },
     ["<leader>Tv"] = {
       function()
-        require('crates').show_versions_popup()
+        require("crates").show_versions_popup()
       end,
-      "Show version popup"
+      "Show version popup",
     },
     ["<leader>Tf"] = {
       function()
-        require('crates').show_features_popup()
+        require("crates").show_features_popup()
       end,
-      "Show features popup"
+      "Show features popup",
     },
     ["<leader>Td"] = {
       function()
-        require('crates').show_dependencies_popup()
+        require("crates").show_dependencies_popup()
       end,
-      "Show dependencies popup"
+      "Show dependencies popup",
     },
     ["<leader>Tu"] = {
       function()
-        require('crates').update_crate()
+        require("crates").update_crate()
       end,
-      "Update crate"
+      "Update crate",
     },
     ["<leader>Ta"] = {
       function()
-        require('crates').update_all_crates()
+        require("crates").update_all_crates()
       end,
-      "Update all crates"
+      "Update all crates",
     },
     ["<leader>TU"] = {
       function()
-        require('crates').upgrade_crate()
+        require("crates").upgrade_crate()
       end,
-      "Upgrade crate"
+      "Upgrade crate",
     },
     ["<leader>TA"] = {
       function()
-        require('crates').upgrade_all_crates()
+        require("crates").upgrade_all_crates()
       end,
-      "Upgrade all crates"
+      "Upgrade all crates",
     },
     ["<leader>TH"] = {
       function()
-        require('crates').open_homepage()
+        require("crates").open_homepage()
       end,
-      "Open homepage"
+      "Open homepage",
     },
     ["<leader>TR"] = {
       function()
-        require('crates').open_repository()
+        require("crates").open_repository()
       end,
-      "Open repository"
+      "Open repository",
     },
     ["<leader>TD"] = {
       function()
-        require('crates').open_documentation()
+        require("crates").open_documentation()
       end,
-      "Open documentation"
+      "Open documentation",
     },
     ["<leader>TC"] = {
       function()
-        require('crates').open_crates_io()
+        require("crates").open_crates_io()
       end,
-      "Open crates.io"
+      "Open crates.io",
     },
-  }
+  },
 }
 
 M.general = {
@@ -112,13 +112,13 @@ M.general = {
       function()
         vim.diagnostic.goto_prev { float = { border = "rounded" } }
       end,
-      "Next diagnostic"
+      "Next diagnostic",
     },
     ["<C-x>"] = {
       function()
         vim.diagnostic.goto_next { float = { border = "rounded" } }
       end,
-      "Next diagnostic"
+      "Next diagnostic",
     },
     ["<leader>gt"] = {
       --Need some work
@@ -126,31 +126,31 @@ M.general = {
       --   require("gitui").open()
       -- end,
       "<cmd> LazyGit <CR>",
-      "Open gitui"
+      "Open gitui",
     },
     ["<leader>tm"] = {
       "<cmd>MarkdownPreviewToggle<CR>",
-      "Preview markdown toggle"
+      "Preview markdown toggle",
     },
     ["<leader>S"] = {
       function() end,
-      "Workspaces"
+      "Workspaces",
     },
     ["<leader>Sp"] = {
       "<cmd> WorkspacesOpen <CR>",
-      "Open workspaces picker"
+      "Open workspaces picker",
     },
     ["<leader>Sr"] = {
       "<cmd> WorkspacesRemove <CR>",
-      "Remove current workspace"
+      "Remove current workspace",
     },
     ["<leader>Ss"] = {
       "<cmd> WorkspacesAdd <CR>",
-      "Save current workspace"
+      "Save current workspace",
     },
     ["<leader>q"] = {
       "<cmd>q!<CR>",
-      "Exit"
+      "Exit",
     },
     ["<leader>h>"] = {
       "<cmd> ToggleTerm size=40  direction=horizontal <CR>",
@@ -160,7 +160,45 @@ M.general = {
       "<cmd> ToggleTerm size=40  direction=vertical <CR>",
       "Toggle vertical term",
     },
-  }
+  },
+}
+
+M.lspconfig = {
+  plugin = true,
+  n = {
+    ["<leader>ca"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP code action",
+    },
+
+    ["gr"] = {
+      function()
+        vim.lsp.buf.references()
+      end,
+      "LSP references",
+    },
+    ["gi"] = {
+      function()
+        vim.lsp.buf.implementation()
+      end,
+      "LSP implementation",
+    },
+    ["gD"] = {
+      function()
+        vim.lsp.buf.declaration()
+      end,
+      "LSP declaration",
+    },
+
+    ["gd"] = {
+      function()
+        vim.lsp.buf.definition()
+      end,
+      "LSP definition",
+    },
+  },
 }
 
 M.nvimtree = {
@@ -169,6 +207,6 @@ M.nvimtree = {
   n = {
     -- toggle
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-  }
+  },
 }
 return M

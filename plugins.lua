@@ -1,7 +1,6 @@
-local general = require("custom/configs/general")
-local sessions = require("custom/configs/sessions")
-local rust_utils = require("custom/configs/rust_utils")
-
+local general = require "custom/configs/general"
+local sessions = require "custom/configs/sessions"
+local rust_utils = require "custom/configs/rust_utils"
 
 local plugins = {
   {
@@ -9,7 +8,7 @@ local plugins = {
     config = function()
       require "plugins/configs/lspconfig"
       require "custom/configs/lspconfig"
-    end
+    end,
   },
   {
     "williamboman/mason.nvim",
@@ -17,11 +16,18 @@ local plugins = {
     opts = function(_, opts)
       if type(opts.ensure_installed) == "table" then
         vim.list_extend(opts.ensure_installed, {
-          "codelldb", "rust-analyzer",
+          "codelldb",
+          "rust-analyzer",
           "tailwindcss-language-server",
-          "html-lsp", "typescript-language-server", "taplo",
-          "angular-language-server", "marksman", "css-lsp", "eslint-lsp",
-          "prettier", "stylua"
+          "html-lsp",
+          "typescript-language-server",
+          "taplo",
+          "angular-language-server",
+          "marksman",
+          "css-lsp",
+          "eslint-lsp",
+          "prettier",
+          "stylua",
         })
       end
     end,
@@ -49,12 +55,23 @@ local plugins = {
   {
     "nvimtools/none-ls.nvim",
     dependencies = {
-      "nvim-lua/plenary.nvim"
+      "nvim-lua/plenary.nvim",
     },
-    events ="VeryLazy",
+    lazy = false,
     config = function()
-      require("custom.configs.none_ls")
-    end
+      require "custom.configs.none_ls"
+    end,
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function(_, opts)
+      opts.git = {
+        enable = true,
+      }
+      opts.diagnostics = {
+        enable = true,
+      }
+    end,
   },
   rust_utils,
   general,
