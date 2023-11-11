@@ -17,6 +17,7 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+      "hrsh7th/cmp-nvim-lsp"
     },
     opts = function(_, opts)
       local format_kinds = opts.formatting.format
@@ -38,7 +39,7 @@ return {
   { "mg979/vim-visual-multi",  event ="VeryLazy",},
   {
     "akinsho/toggleterm.nvim",
-    event ="VeryLazy",
+    commands = {"ToggleTerm"},
     version = "*",
     opts = {
       --[[ things you want to change go here]]
@@ -86,13 +87,13 @@ return {
   -- },
   {
     "kdheepak/lazygit.nvim",
-    event = "VeryLazy",
+    cmd = { "LazyGit"},
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
   },
   {
-    'stevearc/dressing.nvim',
+    "stevearc/dressing.nvim",
     event = "VeryLazy",
     opts = {
       input = {
@@ -114,5 +115,5 @@ return {
         end
       }
     },
-  },
+  }
 }
