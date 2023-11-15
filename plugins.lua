@@ -51,7 +51,10 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-telescope/telescope-ui-select.nvim", "nvim-telescope/telescope-file-browser.nvim" },
+    dependencies = {
+      "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
+    },
     configs = function()
       require "plugins/configs/telescope"
       require "custom/configs/telescope"
@@ -61,22 +64,16 @@ local plugins = {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "mason.nvim",
     },
-    lazy = false,
+    ft = { "lua", "typescript", "html", "tsx", "css" },
     config = function()
       require "custom.configs.none_ls"
     end,
   },
   {
     "nvim-tree/nvim-tree.lua",
-    opts = function(_, opts)
-      opts.git = {
-        enable = true,
-      }
-      opts.diagnostics = {
-        enable = true,
-      }
-    end,
+    opts = require "custom.configs.nvimtree",
   },
   rust_utils,
   general,

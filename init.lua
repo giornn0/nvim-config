@@ -1,9 +1,3 @@
-require "custom.configs.neovide"
-
-vim.opt.termguicolors = true
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
   vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
@@ -16,4 +10,10 @@ function _G.set_terminal_keymaps()
 end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd "autocmd! TermOpen term://*toggleterm# lua set_terminal_keymaps()"
+vim.cmd "autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()"
+
+vim.opt.termguicolors = true
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+require "custom.configs.neovide"

@@ -42,6 +42,11 @@ lspconfig.cssls.setup {
   capabilities = capabilities,
 }
 
+lspconfig.taplo.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 --Angular LSP
 --This path can be different according to the os.
 local base_user_node_modules = "/usr/lib/node_modules"
@@ -136,13 +141,13 @@ lspconfig.tailwindcss.setup {
     "svelte",
     "vue",
     --Remove this if you dont work with wasm rust
-    "rust",
+    -- "rust",
   },
   init_options = {
     -- There you can set languages to be considered as different ones by tailwind lsp I guess same as includeLanguages in VSCod
     userLanguages = {
       --Remove this if you dont work with wasm rust
-      rust = "html",
+      -- rust = "html",
     },
   },
   settings = {

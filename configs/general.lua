@@ -1,23 +1,25 @@
 return {
   {
-  "lewis6991/gitsigns.nvim",
-  opts = function (_ , opts)
-    opts.current_line_blame = true
-    if type(opts.current_line_blame_opts) == "table" then
-        vim.list_extend(opts.current_line_blame_opts, { {
-        virt_text = true,
-        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-        delay = 300,
-        ignore_whitespace = false,
-      } })
-    end
-  end,
+    "lewis6991/gitsigns.nvim",
+    opts = function(_, opts)
+      opts.current_line_blame = true
+      if type(opts.current_line_blame_opts) == "table" then
+        vim.list_extend(opts.current_line_blame_opts, {
+          {
+            virt_text = true,
+            virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+            delay = 300,
+            ignore_whitespace = false,
+          },
+        })
+      end
+    end,
   },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
       { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
-      "hrsh7th/cmp-nvim-lsp"
+      "hrsh7th/cmp-nvim-lsp",
     },
     opts = function(_, opts)
       local format_kinds = opts.formatting.format
@@ -29,17 +31,17 @@ return {
   },
   {
     "brenoprata10/nvim-highlight-colors",
-    event ="VeryLazy",
+    event = "VeryLazy",
     opts = {
-	    render = 'background', -- or 'foreground' or 'first_column'
-	    enable_named_colors = true,
-	    enable_tailwind = true,
-    }
+      render = "background", -- or 'foreground' or 'first_column'
+      enable_named_colors = true,
+      enable_tailwind = true,
+    },
   },
-  { "mg979/vim-visual-multi",  event ="VeryLazy",},
+  { "mg979/vim-visual-multi", event = "VeryLazy" },
   {
     "akinsho/toggleterm.nvim",
-    commands = {"ToggleTerm"},
+    commands = { "ToggleTerm" },
     version = "*",
     opts = {
       --[[ things you want to change go here]]
@@ -48,13 +50,13 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    event ="VeryLazy",
+    event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = { },
+    opts = {},
   },
   {
     "gbprod/cutlass.nvim",
-    event ="VeryLazy",
+    event = "VeryLazy",
     opts = {
       cut_key = "m",
     },
@@ -63,21 +65,33 @@ return {
     "windwp/nvim-ts-autotag",
     event = "VeryLazy",
     opts = {
-      filetypes = { "html" , "xml", "jsx", "tsx", "typescriptreact", "javascriptreact", "markdown", "typescript", "javascript"  }
-    }
+      filetypes = {
+        "html",
+        "xml",
+        "jsx",
+        "tsx",
+        "typescriptreact",
+        "javascriptreact",
+        "markdown",
+        "typescript",
+        "javascript",
+      },
+    },
   },
   {
-    'windwp/nvim-autopairs',
+    "windwp/nvim-autopairs",
     event = "VeryLazy",
     opts = {
-      disable_filetype = { "TelescopePrompt" , "vim" },
-    } -- this is equalent to setup({}) function
+      disable_filetype = { "TelescopePrompt", "vim" },
+    }, -- this is equalent to setup({}) function
   },
   {
-   "iamcco/markdown-preview.nvim",
+    "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
   --Need to help to use
   -- {
@@ -87,7 +101,7 @@ return {
   -- },
   {
     "kdheepak/lazygit.nvim",
-    cmd = { "LazyGit"},
+    cmd = { "LazyGit" },
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
@@ -98,22 +112,22 @@ return {
     opts = {
       input = {
         win_options = {
-          winhighlight = 'NormalFloat:DiagnosticError'
-        }
+          winhighlight = "NormalFloat:DiagnosticError",
+        },
       },
       select = {
         get_config = function(opts)
-          if opts.kind == 'codeaction' then
+          if opts.kind == "codeaction" then
             return {
-              backend = 'nui',
+              backend = "nui",
               nui = {
-                relative = 'cursor',
+                relative = "cursor",
                 max_width = 40,
-              }
+              },
             }
           end
-        end
-      }
+        end,
+      },
     },
-  }
+  },
 }
