@@ -1,21 +1,15 @@
-local telescope = require("plugins.configs.telescope")
-local banned_messages = { "No information available" }
-vim.notify = function(msg, ...)
-  for _, banned in ipairs(banned_messages) do
-    if msg == banned then
-      return
-    end
-  end
-  return require("notify")(msg, ...)
-end
-endlocal actions = require "telescope.actions"
-local fb_actions = require "telescope".extensions.file_browser.actions
+local telescope = require "plugins.configs.telescope"
+
+vim.notify = require "notify"
+
+local actions = require "telescope.actions"
+local fb_actions = require("telescope").extensions.file_browser.actions
 telescope.setup {
   extensions = {
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {
         -- even more opts
-      }
+      },
     },
     "notify",
     workspaces = {
@@ -29,36 +23,42 @@ telescope.setup {
       mappings = {
         -- your custom insert mode mappings
         ["i"] = {
-          ["<C-w>"] = function() vim.cmd('normal vbd') end,
+          ["<C-w>"] = function()
+            vim.cmd "normal vbd"
+          end,
         },
         ["n"] = {
           -- your custom normal mode mappings
           ["N"] = fb_actions.create,
           ["h"] = fb_actions.goto_parent_dir,
           ["/"] = function()
-            vim.cmd('startinsert')
+            vim.cmd "startinsert"
           end,
           ["<C-p>"] = function(prompt_bufnr)
-            for i = 1, 10 do actions.move_selection_previous(prompt_bufnr) end
+            for i = 1, 10 do
+              actions.move_selection_previous(prompt_bufnr)
+            end
           end,
           ["<C-n>"] = function(prompt_bufnr)
-            for i = 1, 10 do actions.move_selection_next(prompt_bufnr) end
+            for i = 1, 10 do
+              actions.move_selection_next(prompt_bufnr)
+            end
           end,
           ["<PageUp>"] = actions.preview_scrolling_up,
           ["<PageDown>"] = actions.preview_scrolling_down,
         },
       },
     },
-  }
+  },
 }
 
-telescope.load_extension("ui-select")
-telescope.load_extension("notify")
-telescope.load_extension("workspaces")
-telescope.load_extension("file-browser")
+telescope.load_extension "ui-select"
+telescope.load_extension "notify"
+telescope.load_extension "workspaces"
+telescope.load_extension "file-browser"
 
 vim.keymap.set("n", "sf", function()
-  telescope.extensions.file_browser.file_browser({
+  telescope.extensions.file_browser.file_browser {
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
     respect_gitignore = false,
@@ -66,6 +66,6 @@ vim.keymap.set("n", "sf", function()
     grouped = true,
     previewer = false,
     initial_mode = "normal",
-    layout_config = { height = 40 }
-  })
+    layout_config = { height = 40 },
+  }
 end)

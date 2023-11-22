@@ -5,6 +5,7 @@ local rust_utils = require "custom/configs/rust_utils"
 local plugins = {
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "rcarriga/nvim-notify" },
     config = function()
       require "plugins/configs/lspconfig"
       require "custom/configs/lspconfig"
@@ -33,6 +34,8 @@ local plugins = {
           "selene",
           "yaml-language-server",
           "yamllint",
+          "elixir-ls",
+          "eslint-lsp",
         })
       end
     end,
@@ -44,6 +47,10 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "rcarriga/nvim-notify" },
+    lazy = false,
+    priority = 999,
+    build = ":TSUpdate",
+    cmd = { "TSUpdateSync" },
     configs = function()
       require "plugins/configs/treesitter"
       require "custom/configs/treesitter"
@@ -66,7 +73,16 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "mason.nvim",
     },
-    ft = { "lua", "typescript", "html", "tsx", "css" },
+    ft = {
+      "lua",
+      "typescript",
+      "html",
+      "tsx",
+      "css",
+      "jsx",
+      "javascript",
+      "elixir",
+    },
     config = function()
       require "custom.configs.none_ls"
     end,

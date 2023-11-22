@@ -13,4 +13,14 @@ opts.renderer = {
     },
   },
 }
+
+if type(opts.filters) == "table" then
+  vim.list_extend(opts.filters, {
+    dotfiles = false,
+  })
+else
+  opts.filters = {
+    dotfiles = false,
+  }
+end
 return opts

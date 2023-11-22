@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = { theme = 'catppuccin', nvdash = {
+M.ui = { theme = 'mountain', nvdash = {
   header= {
         "                                                         ",
         "              ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆                     ",

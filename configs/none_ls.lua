@@ -14,15 +14,17 @@ end
 
 none_ls.setup {
   sources = {
+    none_ls.builtins.diagnostics.credo,
+    none_ls.builtins.formatting.mix,
     none_ls.builtins.diagnostics.selene,
     none_ls.builtins.diagnostics.yamllint,
     none_ls.builtins.formatting.prettier,
     none_ls.builtins.formatting.stylua,
     none_ls.builtins.formatting.leptosfmt,
+    none_ls.builtins.diagnostics.fish,
     none_ls.builtins.diagnostics.eslint_d.with {
       diagnostics_format = "[eslint] #{m}\n(#{c})",
     },
-    none_ls.builtins.diagnostics.fish,
   },
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then

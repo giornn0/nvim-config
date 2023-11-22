@@ -1,6 +1,16 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
+local banned_messages = { "No information available" }
+vim.notify = function(msg, ...)
+  for _, banned in ipairs(banned_messages) do
+    if msg == banned then
+      return
+    end
+  end
+  return require "notify"(msg, ...)
+end
+
 local lspconfig = require "lspconfig"
 local protocol = require "vim.lsp.protocol"
 
@@ -36,6 +46,7 @@ capabilities_html.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.html.setup {
   capabilities = capabilities_html,
   on_attach = enable_format_on_save,
+  filetypes = { "html", "heex" },
 }
 
 lspconfig.cssls.setup {
@@ -103,6 +114,15 @@ lspconfig.tsserver.setup {
   capabilities = capabilities,
 }
 
+lspconfig.eslint.setup {
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    enable_format_on_save(client, bufnr)
+  end,
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx" },
+  capabilities = capabilities,
+}
+
 lspconfig.lua_ls.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
@@ -127,6 +147,20 @@ lspconfig.lua_ls.setup {
 
 lspconfig.tailwindcss.setup {
   on_attach = on_attach,
+  root_dir = lspconfig.util.root_pattern(
+    "tailwind.config.js",
+    "tailwind.config.cjs",
+    "tailwind.config.mjs",
+    "tailwind.config.ts",
+    "postcss.config.js",
+    "postcss.config.cjs",
+    "postcss.config.mjs",
+    "postcss.config.ts",
+    "package.json",
+    "node_modules",
+    ".git",
+    "mix.exs"
+  ),
   capabilities = capabilities,
   filetypes = {
     "css",
@@ -134,20 +168,26 @@ lspconfig.tailwindcss.setup {
     "sass",
     "postcss",
     "html",
-    "javascript",
     "javascriptreact",
-    "typescript",
     "typescriptreact",
     "svelte",
     "vue",
-    --Remove this if you dont work with wasm rust
+    "heex",
+    "eelixir",
+    --Uncoment this if you dont work with wasm rust
     -- "rust",
+    --Uncoment this if you are working with sigil templates ~H within elixir files
+    -- "elixir",
   },
   init_options = {
     -- There you can set languages to be considered as different ones by tailwind lsp I guess same as includeLanguages in VSCod
     userLanguages = {
-      --Remove this if you dont work with wasm rust
+      --Uncoment this if you dont work with wasm rust
       -- rust = "html",
+      --Uncoment this if you are working with sigil templates ~H within elixir files
+      -- elixir = "html-eex",
+      eelixir = "html-eex",
+      heex = "html-eex",
     },
   },
   settings = {
@@ -164,6 +204,11 @@ lspconfig.tailwindcss.setup {
         recommendedVariantOrder = "warning",
       },
       validate = true,
+      experimental = {
+        classRegex = {
+          'class[:]\\s*"([^"]*)"',
+        },
+      },
     },
   },
 }
@@ -179,6 +224,18 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   virtual_text = { spacing = 4, prefix = "\u{ea71}" },
   severity_sort = true,
 })
+
+lspconfig.elixirls.setup {
+  cmd = { "elixir-ls" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = { elixirLS = { dialyzerEnabled = false } },
+}
+
+lspconfig.gleam.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
