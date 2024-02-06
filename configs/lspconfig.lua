@@ -41,6 +41,18 @@ local config = function()
     on_attach = on_attach,
     capabilities = capabilities,
   }
+  lspconfig.nil_ls.setup {
+    on_attach = enable_format_on_save,
+    capabilities = capabilities,
+    command = "nil",
+    settings = {
+      ["nil"] = {
+        formatting = {
+          command = { "alejandra", "-q" },
+        },
+      },
+    },
+  }
 
   --Enable (broadcasting) snippet capability for completion
   local capabilities_html = vim.lsp.protocol.make_client_capabilities()

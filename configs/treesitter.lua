@@ -6,6 +6,7 @@ local config = function()
       enable = true,
       -- additional_vim_regex_highlighting = true,
       -- disable = { "rust" },
+      use_languagetree = true,
     },
     -- indent = {
     --   enable = true,
@@ -14,7 +15,6 @@ local config = function()
     ensure_installed = {
       "tsx",
       "toml",
-      "fish",
       "json",
       "yaml",
       "css",
@@ -23,13 +23,13 @@ local config = function()
       "ron",
       "rust",
       "scss",
-      "typescriptreact",
       "markdown",
       "typescript",
       "javascript",
       "elixir",
       "heex",
       "eex",
+      "nix",
     },
     filetypes = {
       "html",
@@ -81,8 +81,6 @@ return {
   priority = 999,
   build = ":TSUpdate",
   cmd = { "TSUpdateSync" },
-  opts = function()
-    return require "plugins/configs/treesitter"
-  end,
+  config = config,
   -- config = config,
 }

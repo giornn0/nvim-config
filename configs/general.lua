@@ -45,7 +45,7 @@ return {
     version = "*",
     opts = {
       --[[ things you want to change go here]]
-      shell = "/usr/bin/fish",
+      shell = "zsh",
     },
   },
   {

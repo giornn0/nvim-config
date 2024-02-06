@@ -22,7 +22,8 @@ local config = function()
       none_ls.builtins.formatting.prettier,
       none_ls.builtins.formatting.stylua,
       none_ls.builtins.formatting.leptosfmt,
-      none_ls.builtins.diagnostics.fish,
+      -- none_ls.builtins.formatting.alejandra,
+      -- none_ls.builtins.diagnostics.fish,
       none_ls.builtins.diagnostics.eslint_d.with {
         diagnostics_format = "[eslint] #{m}\n(#{c})",
       },
