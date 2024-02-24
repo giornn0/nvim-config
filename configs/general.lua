@@ -45,7 +45,6 @@ return {
     version = "*",
     opts = {
       --[[ things you want to change go here]]
-      shell = "zsh",
     },
   },
   {
@@ -151,4 +150,7 @@ return {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   },
+  -- {
+  --   "rfussenegger/nvim-dap",
+  -- },
 }
