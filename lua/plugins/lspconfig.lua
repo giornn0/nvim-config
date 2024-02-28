@@ -49,14 +49,17 @@ return {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       opts.servers = vim.tbl_extend("force", opts.servers, {
-        tsserver = {
-          on_attach = function(client)
-            -- this is important, otherwise tsserver will format ts/js
-            -- files which we *really* don't want.
-            client.server_capabilities.documentFormattingProvider = false
-          end,
-        },
+        -- tsserver = {
+        --   on_attach = function(client)
+        --     -- this is important, otherwise tsserver will format ts/js
+        --     -- files which we *really* don't want.
+        --     client.server_capabilities.documentFormattingProvider = false
+        --   end,
+        -- },
         biome = {},
+        postgres_lsp = {},
+        nil_ls = {},
+        graphql = {},
       })
       return opts
     end,
@@ -66,6 +69,8 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls").builtins
       opts.sources = vim.list_extend(opts.sources or {}, {
+        nls.formatting.alejandra,
+        nls.formatting.pg_format,
         nls.formatting.biome.with({
           args = {
             "check",
@@ -76,6 +81,18 @@ return {
             "$FILENAME",
           },
         }),
+      })
+      return opts
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      -- add tsx and treesitter
+      vim.list_extend(opts.ensure_installed, {
+        "sql",
+        "nix",
+        "graphql",
       })
     end,
   },
