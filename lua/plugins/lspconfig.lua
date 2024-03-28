@@ -60,6 +60,7 @@ return {
         postgres_lsp = {},
         nil_ls = {},
         graphql = {},
+        zls = {},
       })
       return opts
     end,
@@ -89,10 +90,12 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       -- add tsx and treesitter
+      opts.ignore_install = { "python" }
       vim.list_extend(opts.ensure_installed, {
         "sql",
         "nix",
         "graphql",
+        "zig",
       })
     end,
   },
