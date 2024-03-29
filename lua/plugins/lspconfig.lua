@@ -55,6 +55,7 @@ return {
   },
   ---@class PluginLspOpts
   opts = function(_, opts)
-    table.insert(opts.servers, { zls = {} })
+    opts = table.insert(opts.servers, { zls = {} })
+    return opts
   end,
 }
