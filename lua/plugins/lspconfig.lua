@@ -44,4 +44,17 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
-return {}
+return {
+  "neovim/nvim-lspconfig",
+  event = "LazyFile",
+  dependencies = {
+    { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
+    { "folke/neodev.nvim", opts = {} },
+    "mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+  },
+  ---@class PluginLspOpts
+  opts = function(_, opts)
+    table.insert(opts.servers, { zls = {} })
+  end,
+}
