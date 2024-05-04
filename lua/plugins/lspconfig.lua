@@ -61,6 +61,7 @@ return {
         nil_ls = {},
         graphql = {},
         zls = {},
+        intelephense = {},
       })
       return opts
     end,
@@ -71,6 +72,7 @@ return {
       local nls = require("null-ls").builtins
       opts.sources = vim.list_extend(opts.sources or {}, {
         nls.formatting.alejandra,
+        nls.formatting.pretty_php,
         nls.formatting.pg_format,
         nls.formatting.biome.with({
           args = {
@@ -96,6 +98,7 @@ return {
         "nix",
         "graphql",
         "zig",
+        "php",
       })
     end,
   },
