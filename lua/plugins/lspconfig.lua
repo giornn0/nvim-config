@@ -1,4 +1,5 @@
 local protocol = require("vim.lsp.protocol")
+local tailwindcss = require("config.tailwindcss")
 
 protocol.CompletionItemKind = {
   "", -- Text
@@ -62,6 +63,7 @@ return {
         graphql = {},
         zls = {},
         intelephense = {},
+        tailwindcss = tailwindcss,
       })
       return opts
     end,
