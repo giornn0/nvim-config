@@ -14,10 +14,10 @@ require("lazy").setup({
     -- Editor Extras
     { import = "lazyvim.plugins.extras.editor.aerial" },
     { import = "lazyvim.plugins.extras.editor.leap" },
-    { import = "lazyvim.plugins.extras.ui.mini-animate" },
-    { import = "lazyvim.plugins.extras.editor.mini-files" },
     { import = "lazyvim.plugins.extras.editor.navic" },
-    -- { import = "lazyvim.plugins.extras.editor.symbols-outline" },
+    { import = "lazyvim.plugins.extras.editor.trouble-v3" },
+    { import = "lazyvim.plugins.extras.ui.mini-animate" },
+    { import = "lazyvim.plugins.extras.editor.outline" },
     -- Core
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
     --{ import = "lazyvim.plugins.extras.dap.core" },
