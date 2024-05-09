@@ -50,13 +50,13 @@ return {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       opts.servers = vim.tbl_extend("force", opts.servers, {
-        -- tsserver = {
-        --   on_attach = function(client)
-        --     -- this is important, otherwise tsserver will format ts/js
-        --     -- files which we *really* don't want.
-        --     client.server_capabilities.documentFormattingProvider = false
-        --   end,
-        -- },
+        tsserver = {
+          on_attach = function(client)
+            -- this is important, otherwise tsserver will format ts/js
+            -- files which we *really* don't want.
+            client.server_capabilities.documentFormattingProvider = false
+          end,
+        },
         biome = {},
         postgres_lsp = {},
         nil_ls = {},
@@ -76,16 +76,16 @@ return {
         nls.formatting.alejandra,
         nls.formatting.pretty_php,
         nls.formatting.pg_format,
-        nls.formatting.biome.with({
-          args = {
-            "check",
-            "--apply-unsafe",
-            "--formatter-enabled=true",
-            "--organize-imports-enabled=true",
-            "--skip-errors",
-            "$FILENAME",
-          },
-        }),
+        -- nls.formatting.biome.with({
+        --   args = {
+        --     "check",
+        --     "--apply-unsafe",
+        --     "--formatter-enabled=true",
+        --     "--organize-imports-enabled=true",
+        --     "--skip-errors",
+        --     "$FILENAME",
+        --   },
+        -- }),
       })
       return opts
     end,
