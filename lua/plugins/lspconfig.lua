@@ -63,6 +63,7 @@ return {
         graphql = {},
         zls = {},
         intelephense = {},
+        gleam = {},
         tailwindcss = tailwindcss,
       })
       return opts
