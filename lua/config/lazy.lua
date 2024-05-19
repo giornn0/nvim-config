@@ -20,10 +20,10 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.outline" },
     -- Core
     { import = "lazyvim.plugins.extras.lsp.none-ls" },
-    --{ import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.test.core" },
     -- { import = "lazyvim.plugins.extras.coding.codeium" },
     -- Languages
+    { import = "lazyvim.plugins.extras.lang.elixir" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.docker" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
