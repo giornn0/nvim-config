@@ -156,4 +156,15 @@ return {
     cmd = "IncRename",
     config = true,
   },
+  {
+    "direnv/direnv.vim",
+    lazy = true,
+    init = function(plug)
+      local f = io.open(vim.loop.cwd() .. "/.envrc", "r")
+      if f ~= nil then
+        io.close(f)
+        plug.lazy = false
+      end
+    end,
+  },
 }
