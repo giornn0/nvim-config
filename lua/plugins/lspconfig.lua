@@ -39,12 +39,22 @@ vim.diagnostic.config({
   virtual_text = true,
   -- update_in_insert = true,
   float = {
-    source = "always", -- Or "if_many"
+    source = true, -- Or "if_many"
   },
   signs = true,
   severity_sort = true,
 })
-
+--INFO: This cmd is related to where you install your npm packages globally.
+--For this we need to install @angular-language-server + typescript.
+local node_modules_path = "/home/giornn0/.npm/lib/node_modules"
+local angular_cmd = {
+  node_modules_path .. "/@angular/language-server/bin/ngserver",
+  "--ngProbeLocations",
+  node_modules_path .. "/@angular/language-server/lib",
+  "--tsProbeLocations",
+  node_modules_path .. "/typescript/lib",
+  "--stdio",
+}
 return {
   {
     "neovim/nvim-lspconfig",
@@ -64,6 +74,13 @@ return {
         zls = {},
         intelephense = {},
         gleam = {},
+        angularls = {
+          cmd = angular_cmd,
+          on_new_config = function(new_config, new_root_dir)
+            new_config.cmd = angular_cmd
+          end,
+        },
+        vtsls = {},
         tailwindcss = tailwindcss,
       })
       return opts
@@ -77,16 +94,6 @@ return {
         nls.formatting.alejandra,
         nls.formatting.pretty_php,
         nls.formatting.pg_format,
-        -- nls.formatting.biome.with({
-        --   args = {
-        --     "check",
-        --     "--apply-unsafe",
-        --     "--formatter-enabled=true",
-        --     "--organize-imports-enabled=true",
-        --     "--skip-errors",
-        --     "$FILENAME",
-        --   },
-        -- }),
       })
       return opts
     end,
