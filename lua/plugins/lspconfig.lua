@@ -60,13 +60,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       opts.servers = vim.tbl_extend("force", opts.servers, {
-        tsserver = {
-          on_attach = function(client)
-            -- this is important, otherwise tsserver will format ts/js
-            -- files which we *really* don't want.
-            client.server_capabilities.documentFormattingProvider = false
-          end,
-        },
+        tsserver = {},
         biome = {},
         postgres_lsp = {},
         nil_ls = {},
@@ -80,7 +74,6 @@ return {
             new_config.cmd = angular_cmd
           end,
         },
-        vtsls = {},
         tailwindcss = tailwindcss,
       })
       return opts
