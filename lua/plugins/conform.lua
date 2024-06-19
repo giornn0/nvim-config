@@ -38,10 +38,10 @@ return {
       ["json"] = default_formatter,
       ["jsonc"] = default_formatter,
       -- ["vue"] = { "biome" },
-      -- ["css"] = { "biome" },
-      -- ["scss"] = { "biome" },
-      -- ["less"] = { "biome" },
-      -- ["html"] = { "biome" },
+      ["css"] = default_formatter,
+      ["scss"] = default_formatter,
+      ["less"] = default_formatter,
+      ["html"] = default_formatter,
     })
   end,
 }

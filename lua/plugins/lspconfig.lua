@@ -63,11 +63,8 @@ return {
         tsserver = {},
         biome = {},
         postgres_lsp = {},
-        nil_ls = {},
         graphql = {},
         zls = {},
-        intelephense = {},
-        gleam = {},
         angularls = {
           cmd = angular_cmd,
           on_new_config = function(new_config, new_root_dir)
@@ -80,28 +77,15 @@ return {
     end,
   },
   {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls").builtins
-      opts.sources = vim.list_extend(opts.sources or {}, {
-        nls.formatting.alejandra,
-        nls.formatting.pretty_php,
-        nls.formatting.pg_format,
-      })
-      return opts
-    end,
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       -- add tsx and treesitter
       opts.ignore_install = { "python" }
       vim.list_extend(opts.ensure_installed, {
-        "sql",
-        "nix",
         "graphql",
         "zig",
-        "php",
+        "css",
+        "scss",
       })
     end,
   },
