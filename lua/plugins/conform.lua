@@ -42,6 +42,7 @@ return {
       ["scss"] = default_formatter,
       ["less"] = default_formatter,
       ["html"] = default_formatter,
+      ["php"] = { "php_cs_fixer" },
     })
   end,
 }
