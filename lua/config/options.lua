@@ -6,3 +6,4 @@ vim.cmd([[let &t_Cs = "\[4:3m"]])
 vim.cmd([[let &t_Ce = "\[4:0m"]])
 
 vim.wo.relativenumber = false
+vim.g.lazyvim_php_lsp = "intelephense"
