@@ -99,6 +99,10 @@ return {
           },
         },
         tailwindcss = tailwindcss,
+        html = {
+          filetypes = { "html", "templ", "heex" },
+        },
+        cssls = {},
       })
       return opts
     end,
