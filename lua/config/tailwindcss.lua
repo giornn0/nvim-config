@@ -12,10 +12,10 @@ return {
     --Uncomment this if you work with wasm rust
     "rust",
     --Uncomment this if you work with phoenix
-    -- "heex",
-    -- "eelixir",
-    --Uncoment this if you are working with sigil templates ~H within elixir files
-    -- "elixir",
+    "heex",
+    "eelixir",
+    -- --Uncoment this if you are working with sigil templates ~H within elixir files
+    -- -- "elixir",
   },
   init_options = {
     -- There you can set languages to be considered as different ones by tailwind lsp I guess same as includeLanguages in VSCod
@@ -23,8 +23,8 @@ return {
       --Uncomment this if you work with wasm rust
       rust = "html",
       --Uncomment this if you work with phoenix
-      -- eelixir = "html-eex",
-      -- heex = "html-eex",
+      eelixir = "html-eex",
+      heex = "html-eex",
       --Uncoment this if you are working with sigil templates ~H within elixir files
       -- elixir = "html-eex",
     },
