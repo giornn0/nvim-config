@@ -60,7 +60,6 @@ return {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       opts.servers = vim.tbl_extend("force", opts.servers, {
-        tsserver = {},
         biome = {},
         postgres_lsp = {},
         graphql = {},

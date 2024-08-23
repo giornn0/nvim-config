@@ -9,6 +9,7 @@ local function default_formatter(bufnr)
     ".prettierrc.js",
     ".prettierrc.cjs",
     ".prettierrc.toml",
+    ".editorconfig",
     "prettier.config.js",
     "prettier.config.cjs",
   }, { upward = true })[1]
