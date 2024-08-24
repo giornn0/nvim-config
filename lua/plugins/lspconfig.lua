@@ -99,7 +99,7 @@ return {
         },
         tailwindcss = tailwindcss,
         html = {
-          filetypes = { "html", "templ", "heex" },
+          filetypes = { "html", "templ", "heex", "htmlangular" },
         },
         cssls = {},
       })
@@ -116,6 +116,7 @@ return {
         "zig",
         "css",
         "scss",
+        "angular",
       })
     end,
   },
