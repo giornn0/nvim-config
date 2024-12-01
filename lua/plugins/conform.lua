@@ -1,6 +1,5 @@
 local function default_formatter(bufnr)
   local has_prettier = vim.fs.find({
-    -- https://prettier.io/docs/en/configuration.html
     ".prettierrc",
     ".prettierrc.json",
     ".prettierrc.yml",
@@ -19,6 +18,8 @@ local function default_formatter(bufnr)
   local has_eslint = vim.fs.find({
     -- https://prettier.io/docs/en/configuration.html
     ".eslintrc.json",
+    ".eslintrc",
+    "eslint.config.js",
   }, { upward = true })[1]
   if has_eslint then
     return { "eslint" }
