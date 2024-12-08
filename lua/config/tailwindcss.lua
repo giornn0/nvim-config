@@ -20,7 +20,7 @@ return {
   },
   init_options = {
     -- There you can set languages to be considered as different ones by tailwind lsp I guess same as includeLanguages in VSCod
-    includeLanguages = {
+    userLanguages = {
       --Uncomment this if you work with wasm rust
       rust = "html",
       --Uncomment this if you work with phoenix
