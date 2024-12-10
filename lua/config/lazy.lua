@@ -13,7 +13,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.lsp.neoconf" },
     -- Core
     { import = "lazyvim.plugins.extras.test.core" },
-    { import = "lazyvim.plugins.extras.dap.core" },
+    -- { import = "lazyvim.plugins.extras.dap.nlua" },
     -- Languages
     { import = "lazyvim.plugins.extras.lang.elixir" },
     { import = "lazyvim.plugins.extras.lang.gleam" },
@@ -38,10 +38,13 @@ require("lazy").setup({
 
     -- Editor Extras
     { import = "lazyvim.plugins.extras.editor.aerial" },
+    { import = "lazyvim.plugins.extras.editor.illuminate" },
+    { import = "lazyvim.plugins.extras.editor.mini-diff" },
     { import = "lazyvim.plugins.extras.editor.leap" },
     { import = "lazyvim.plugins.extras.editor.navic" },
-    { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.editor.outline" },
+    { import = "lazyvim.plugins.extras.editor.fzf" },
+    { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.ui.treesitter-context" },
     { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
     -- import/override with your plugins
