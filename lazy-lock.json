@@ -52,7 +52,7 @@
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "render-markdown.nvim": { "branch": "main", "commit": "0022a579ac7355966be5ade77699b88c76b6a549" },
   "rustaceanvim": { "branch": "master", "commit": "25aab238aad3e58f864274449456bdc339981750" },
-  "snacks.nvim": { "branch": "main", "commit": "d2b5680359ee8feb34b095fd574b4f9b3f013629" },
+  "snacks.nvim": { "branch": "main", "commit": "33253de59260d40f38ee47faf5c8a7e81f91f42e" },
   "solarized-osaka.nvim": { "branch": "main", "commit": "b023c3f3b9f1ce5b67c22e4401563d03554921cf" },
   "telescope.nvim": { "branch": "master", "commit": "2eca9ba22002184ac05eddbe47a7fe2d5a384dfc" },
   "telescope_hoogle": { "branch": "master", "commit": "5c2ae51bcf905a7101134a597e6f7be2dc05f975" },
