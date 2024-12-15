@@ -39,6 +39,7 @@ return {
       ["typescriptreact"] = default_formatter,
       ["json"] = default_formatter,
       ["jsonc"] = default_formatter,
+      ["svelte"] = default_formatter,
       -- ["vue"] = { "biome" },
       ["css"] = default_formatter,
       ["scss"] = default_formatter,

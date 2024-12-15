@@ -63,43 +63,29 @@ return {
         biome = {},
         postgres_lsp = {},
         graphql = {},
-        zls = {},
         angularls = {
           cmd = angular_cmd,
           on_new_config = function(new_config, new_root_dir)
             new_config.cmd = angular_cmd
           end,
         },
-        elixirls = {
-          cmd = { "elixir-ls" },
-          keys = {
-            {
-              "<leader>cp",
-              function()
-                local params = vim.lsp.util.make_position_params()
-                LazyVim.lsp.execute({
-                  command = "manipulatePipes:serverid",
-                  arguments = { "toPipe", params.textDocument.uri, params.position.line, params.position.character },
-                })
-              end,
-              desc = "To Pipe",
-            },
-            {
-              "<leader>cP",
-              function()
-                local params = vim.lsp.util.make_position_params()
-                LazyVim.lsp.execute({
-                  command = "manipulatePipes:serverid",
-                  arguments = { "fromPipe", params.textDocument.uri, params.position.line, params.position.character },
-                })
-              end,
-              desc = "From Pipe",
-            },
-          },
-        },
         tailwindcss = tailwindcss,
         html = {
           filetypes = { "html", "templ", "heex", "htmlangular" },
+        },
+        svelte = {
+          keys = {
+            {
+              "<leader>co",
+              LazyVim.lsp.action["source.organizeImports"],
+              desc = "Organize Imports",
+            },
+          },
+          capabilities = {
+            workspace = {
+              didChangeWatchedFiles = vim.fn.has("nvim-0.10") == 0 and { dynamicRegistration = true },
+            },
+          },
         },
         cssls = {},
       })
@@ -113,10 +99,10 @@ return {
       opts.ignore_install = { "python" }
       vim.list_extend(opts.ensure_installed, {
         "graphql",
-        "zig",
         "css",
         "scss",
         "angular",
+        "svelte",
       })
     end,
   },

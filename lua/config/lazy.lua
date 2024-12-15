@@ -34,7 +34,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     -- { import = "lazyvim.plugins.extras.formatting.biome" },
     { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.svelte" },
+    -- { import = "lazyvim.plugins.extras.lang.svelte" },
 
     -- Editor Extras
     { import = "lazyvim.plugins.extras.editor.aerial" },
