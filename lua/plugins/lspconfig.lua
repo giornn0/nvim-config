@@ -1,4 +1,7 @@
 local protocol = require("vim.lsp.protocol")
+local angular = require("config.angular")
+local elixir = require("config.elixir")
+local svelte = require("config.svelte")
 local tailwindcss = require("config.tailwindcss")
 
 protocol.CompletionItemKind = {
@@ -44,50 +47,20 @@ vim.diagnostic.config({
   signs = true,
   severity_sort = true,
 })
---INFO: This cmd is related to where you install your npm packages globally.
---For this we need to install @angular-language-server + typescript.
-local angular_cmd = {
-  "ngserver",
-  "--ngProbeLocations",
-  "./",
-  "--tsProbeLocations",
-  "./",
-  "--stdio",
-}
 
 return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
       opts.servers = vim.tbl_extend("force", opts.servers, {
-        biome = {},
-        postgres_lsp = {},
-        graphql = {},
-        angularls = {
-          cmd = angular_cmd,
-          on_new_config = function(new_config, new_root_dir)
-            new_config.cmd = angular_cmd
-          end,
-        },
+        angularls = angular,
         tailwindcss = tailwindcss,
         html = {
-          filetypes = { "html", "templ", "heex", "htmlangular" },
+          filetypes = { "html", "templ", "htmlangular" },
         },
-        svelte = {
-          keys = {
-            {
-              "<leader>co",
-              LazyVim.lsp.action["source.organizeImports"],
-              desc = "Organize Imports",
-            },
-          },
-          capabilities = {
-            workspace = {
-              didChangeWatchedFiles = vim.fn.has("nvim-0.10") == 0 and { dynamicRegistration = true },
-            },
-          },
-        },
+        svelte = svelte,
         cssls = {},
+        elixirls = elixir,
       })
       return opts
     end,
@@ -98,7 +71,6 @@ return {
       -- add tsx and treesitter
       opts.ignore_install = { "python" }
       vim.list_extend(opts.ensure_installed, {
-        "graphql",
         "css",
         "scss",
         "angular",
