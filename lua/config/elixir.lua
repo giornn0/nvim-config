@@ -23,5 +23,5 @@ return {
       desc = "From Pipe",
     },
   },
-  cmd = "",
+  cmd = { "elixir-ls" },
 }
