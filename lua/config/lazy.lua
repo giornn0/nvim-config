@@ -17,12 +17,10 @@ require("lazy").setup({
     -- Languages
     { import = "lazyvim.plugins.extras.lang.elixir" },
     { import = "lazyvim.plugins.extras.lang.gleam" },
-    { import = "lazyvim.plugins.extras.lang.haskell" },
     { import = "lazyvim.plugins.extras.lang.nix" },
     { import = "lazyvim.plugins.extras.lang.nushell" },
     { import = "lazyvim.plugins.extras.lang.php" },
     { import = "lazyvim.plugins.extras.lang.sql" },
-    { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.docker" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "lazyvim.plugins.extras.lang.tailwind" },
