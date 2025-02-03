@@ -3,6 +3,7 @@ local angular = require("config.angular")
 local elixir = require("config.elixir")
 local svelte = require("config.svelte")
 local tailwindcss = require("config.tailwindcss")
+local nginx = require("config.nginx")
 
 protocol.CompletionItemKind = {
   "", -- Text
@@ -48,6 +49,12 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
+vim.filetype.add({
+  pattern = {
+    [".conf"] = "nginx",
+  },
+})
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -61,6 +68,7 @@ return {
         svelte = svelte,
         cssls = {},
         elixirls = elixir,
+        nginx_language_server = nginx,
       })
       return opts
     end,
@@ -75,6 +83,7 @@ return {
         "scss",
         "angular",
         "svelte",
+        "nginx",
       })
     end,
   },
