@@ -18,10 +18,15 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = true, -- Load this plugin immediately
-    opts = {
-      transparent_background = true, -- Enable transparent background
-      flavour = "mocha", -- Set the flavor of the color scheme
-    },
+    opts = function(_, opts)
+      local module = require("catppuccin.groups.integrations.bufferline")
+      if module then
+        module.get = module.get_theme
+      end
+      opts.transparent_background = true -- Enable transparent background
+      opts.flavour = "mocha" -- Set the flavor of the color scheme
+      return opts
+    end,
     integrations = {
       cmp = true, -- Enable integration with nvim-cmp
       gitsigns = true, -- Enable integration with gitsigns
