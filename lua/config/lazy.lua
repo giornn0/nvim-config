@@ -28,6 +28,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.zig" },
     { import = "lazyvim.plugins.extras.lang.toml" },
     { import = "lazyvim.plugins.extras.lang.git" },
+    { import = "lazyvim.plugins.extras.lang.go" },
 
     -- Ts/Js World
     { import = "lazyvim.plugins.extras.lang.typescript" },
