@@ -1,4 +1,5 @@
 ---@type ChadrcConfig
+---@class M
 local M = {}
 
 M.ui = {
@@ -28,6 +29,6 @@ M.ui = {
   },
 }
 M.plugins = "custom.plugins"
-M.mappings = require "custom.mappings"
+M.mappings = require("custom.mappings")
 
 return M
