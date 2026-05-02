@@ -5,3 +5,6 @@ local map = LazyVim.safe_keymap_set
 
 map("n", "<leader>Nn", "A<CR>", { desc = "New line from end", silent = true })
 map("n", "<leader>Nb", "i<CR>", { desc = "New line in place", silent = true })
+
+map("n", "<C-u>", "<C-u>zz")
+map("n", "<C-d>", "<C-d>zz")
