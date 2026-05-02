@@ -15,7 +15,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.test.core" },
     -- { import = "lazyvim.plugins.extras.dap.nlua" },
     -- Languages
-    { import = "lazyvim.plugins.extras.lang.elixir" },
+    -- { import = "lazyvim.plugins.extras.lang.elixir" },
     { import = "lazyvim.plugins.extras.lang.gleam" },
     { import = "lazyvim.plugins.extras.lang.nix" },
     { import = "lazyvim.plugins.extras.lang.nushell" },
