@@ -1,11 +1,1 @@
-vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_python3_provider = 0
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
-vim.filetype.add({
-  extension = {
-    postcss = "css",
-  },
-})
+/nix/store/r5vhpn0p822ypk7yryan2za64kaiv4wj-home-manager-files/.config/nvim/init.lua
